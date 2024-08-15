@@ -21,7 +21,20 @@ void dfs(int u) {
     cout << u << "로부터 시작된 함수가 종료되었습니다.\n";
     return;
 }
-
+void countComponent(int u)
+{
+    int count=0;
+    visited[u] = 1;
+    for (int i = 0; i < 6; i++) {
+        for (int v : adj[u]) {
+            if (visited[v] == 0) {
+                dfs(v);
+            }
+        }
+        count++;
+    }
+    cout << count;
+}
 int main() {
     adj[1].push_back(2);
     adj[1].push_back(3);
